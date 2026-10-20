@@ -49,3 +49,19 @@ body{background:#f7f4ed}
 .unverified{border:1px solid #e9d8a7;background:#fff8e5;color:#6c5427;border-radius:7px;padding:15px;margin:15px 0;font:400 13px Karla,Arial,sans-serif;line-height:1.6}
 .unverified p{margin-bottom:0}.draft-steps li{margin-bottom:11px;line-height:1.6}
 @media(max-width:600px){.idea-grid{grid-template-columns:1fr;gap:12px}.idea-tile{min-height:160px}}
+
+/* Despensa agrupada y etiquetas de selección */
+.pantry-groups{max-height:410px;overflow-y:auto;display:block;margin:14px 0}
+.pantry-group{border-bottom:1px solid #e9e5da}
+.pantry-group summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:5px;padding:12px 3px;font:700 12px Karla,Arial,sans-serif;color:#405a46}
+.pantry-group summary::-webkit-details-marker{display:none}
+.pantry-group summary:after{content:"⌄";color:#768579;margin-left:auto}
+.pantry-group[open] summary:after{content:"⌃"}
+.pantry-group-items{padding:4px 2px 13px 8px;display:grid;gap:11px}
+.pantry-selected h2{display:flex;justify-content:space-between;align-items:center}
+.selected-count{font:700 12px Karla,Arial,sans-serif;background:#e8f0e7;padding:4px 9px;border-radius:20px;color:#426a48}
+.selected-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.selected-tag{border:1px solid #d5dfcf;background:#edf3e8;color:#395d43;padding:7px 10px;border-radius:5px;font:700 12px Karla,Arial,sans-serif;cursor:pointer}
+.selected-tag:hover{background:#ddeada}
+@media(max-width:850px){.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.pantry-selected{grid-column:1/-1}}
+@media(max-width:560px){.sidebar{grid-template-columns:1fr}.pantry-selected{grid-column:auto}.pantry-groups{max-height:360px}}
