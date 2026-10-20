@@ -94,7 +94,7 @@ function DishImage({name,category,large=false}:{name:string;category:string;larg
  ];
  const photo=photos.find(p=>p.test.test(n))?.url;
  return <div className={"dish-image dish-"+visual.tone+(large?" dish-large":"")}>
- {photo?<img src={photo} alt={"Fotografía referencial para "+name} loading={large?"eager":"lazy"} decoding="async" onError={e=>{e.currentTarget.style.display="none";}}/>:null}
+ {photo?<img src={photo} alt={"Fotografía referencial para "+name} loading={large?"eager":"lazy"} decoding="async" onLoad={e=>{const emoji=e.currentTarget.nextElementSibling as HTMLElement|null;if(emoji)emoji.style.display="none";}} onError={e=>{e.currentTarget.style.display="none";}}/>:null}
  <span aria-hidden="true">{visual.emoji}</span>
  </div>;
 }
