@@ -86,7 +86,17 @@ function dishVisual(name:string,category:string) {
 }
 function DishImage({name,category,large=false}:{name:string;category:string;large?:boolean}) {
  const visual=dishVisual(name,category);
- return <div className={"dish-image dish-"+visual.tone+(large?" dish-large":"")} role="img" aria-label={"Ilustración referencial de "+name}><span aria-hidden="true">{visual.emoji}</span></div>;
+ const n=name.toLocaleLowerCase("es");
+ const photos=[
+  {test:/frutilla|fresa|smoothie.*berry|batido.*frutilla/,url:"https://unsplash.com/photos/r2Q_e8l68gM/download?force=true&w=900"},
+  {test:/lenteja/,url:"https://unsplash.com/photos/BIRp2p8vR8k/download?force=true&w=900"},
+  {test:/papa.*(frita|horno|rústica)|papas en air fryer/,url:"https://unsplash.com/photos/2q1LtLiuEnQ/download?force=true&w=900"}
+ ];
+ const photo=photos.find(p=>p.test.test(n))?.url;
+ return <div className={"dish-image dish-"+visual.tone+(large?" dish-large":"")}>
+ {photo?<img src={photo} alt={"Fotografía referencial para "+name} loading={large?"eager":"lazy"} decoding="async" onError={e=>{e.currentTarget.style.display="none";}}/>:null}
+ <span aria-hidden="true">{visual.emoji}</span>
+ </div>;
 }
 export default function App() {
  const [query,setQuery]=useState("");
