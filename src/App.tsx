@@ -91,7 +91,7 @@ function DishImage({name,category,large=false}:{name:string;category:string;larg
  // Asociar imágenes por preparación exacta, no por ingrediente aislado.
  const photos=[
   {test:/hamburguesa de lentejas/,url:commons("Lentil burger.jpg")},
-  {test:/batido de frutilla|smoothie de frutilla|jugo de frutilla/,url:commons("Strawberry smoothie.jpg")},
+  {test:/batido de frutilla|smoothie de frutilla/,url:commons("Strawberry Smoothie.jpg")},
   {test:/lentejas con arroz/,url:commons("Lentejas con arroz.jpg")}
  ];
  const photo=photos.find(p=>p.test.test(n))?.url;
