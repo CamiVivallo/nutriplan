@@ -87,10 +87,12 @@ function dishVisual(name:string,category:string) {
 function DishImage({name,category,large=false}:{name:string;category:string;large?:boolean}) {
  const visual=dishVisual(name,category);
  const n=name.toLocaleLowerCase("es");
+ const commons=(file:string)=>"https://commons.wikimedia.org/wiki/Special:Redirect/file/"+encodeURIComponent(file)+"?width=900";
+ // Asociar imágenes por preparación exacta, no por ingrediente aislado.
  const photos=[
-  {test:/frutilla|fresa|smoothie.*berry|batido.*frutilla/,url:"https://unsplash.com/photos/r2Q_e8l68gM/download?force=true&w=900"},
-  {test:/lenteja/,url:"https://unsplash.com/photos/BIRp2p8vR8k/download?force=true&w=900"},
-  {test:/papa.*(frita|horno|rústica)|papas en air fryer/,url:"https://unsplash.com/photos/2q1LtLiuEnQ/download?force=true&w=900"}
+  {test:/hamburguesa de lentejas/,url:commons("Lentil burger.jpg")},
+  {test:/batido de frutilla|smoothie de frutilla|jugo de frutilla/,url:commons("Strawberry smoothie.jpg")},
+  {test:/lentejas con arroz/,url:commons("Lentejas con arroz.jpg")}
  ];
  const photo=photos.find(p=>p.test.test(n))?.url;
  return <div className={"dish-image dish-"+visual.tone+(large?" dish-large":"")}>
