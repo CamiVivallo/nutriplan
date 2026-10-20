@@ -98,3 +98,14 @@ body{background:var(--np-cream);color:var(--np-ink)}
 .modal .dish-image{max-width:100%}
 @media(max-width:700px){.cards,.idea-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.modal{padding:20px}.dish-large{height:205px}}
 @media(max-width:500px){.cards,.idea-grid{grid-template-columns:1fr}.recipe-banner,.idea-tile .dish-image{height:185px}.modal h2{font-size:26px}}
+
+/* Editorial V2 food photography, consistent image framing */
+.dish-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:2}
+.dish-image:has(img) span{position:relative}
+.recipe-banner,.idea-tile .dish-image{height:195px}
+.idea-tile,.recipe{border-radius:10px;box-shadow:0 2px 12px rgba(39,58,43,.055)}
+.idea-heading h3{font-family:Fraunces,Georgia,serif;color:#2E4A3D}
+.idea-tile .idea-open,.card-bottom button{background:#44694c}
+.idea-tile .idea-open:hover,.card-bottom button:hover{background:#2e4a3d}
+.recipe-banner .recipe-category{z-index:3}
+@media(max-width:600px){.recipe-banner,.idea-tile .dish-image{height:210px}}
