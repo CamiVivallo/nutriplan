@@ -109,3 +109,8 @@ body{background:var(--np-cream);color:var(--np-ink)}
 .idea-tile .idea-open:hover,.card-bottom button:hover{background:#2e4a3d}
 .recipe-banner .recipe-category{z-index:3}
 @media(max-width:600px){.recipe-banner,.idea-tile .dish-image{height:210px}}
+
+/* Título editorial principal, tipografía inspirada en Bodoni/Didot. */
+.hero h1{font-family:"Bodoni Moda",Didot,"Bodoni MT",Georgia,serif;font-weight:500;letter-spacing:-.045em;line-height:1.08;text-wrap:balance;color:#2E4A3D}
+.hero h1 em{font-family:inherit;font-style:italic;font-weight:500;color:#557a5b}
+@media(max-width:600px){.hero h1{font-size:clamp(37px,8.5vw,54px);letter-spacing:-.045em;line-height:1.1}}
