@@ -1,13 +1,13 @@
 
 /* Identidad editorial NutriPlan · cálida, cotidiana, sin adornos innecesarios */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500,0,0;9..144,600,0,0;9..144,700,0,0&display=swap');
-:root{font-family:'DM Sans',Arial,sans-serif;color:#29342a;background:#f6f3eb}
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500,0,0;9..144,600,0,0;9..144,700,0,0&display=swap');
+:root{font-family:'Karla',Arial,sans-serif;color:#29342a;background:#f6f3eb}
 body{background:#f6f3eb}
 .shell{max-width:1440px}
 .top{height:88px;background:#faf8f2;border-bottom:1px solid #e8e2d7}
 .logo{font-family:'Fraunces',Georgia,serif;font-size:27px;letter-spacing:-1.1px;font-weight:700;color:#293e31}
 .logo span{color:#638366}
-.brand-tagline{color:#806f58;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:1.5px}
+.brand-tagline{color:#806f58;font-family:'Karla',sans-serif;font-size:10px;letter-spacing:1.5px}
 .hero{background:#eee6d7;color:#26372a;padding:67px 6% 61px;border-bottom:1px solid #e5d9c5}
 .hero:after{display:none}
 .hero h1{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-2.2px;line-height:1.13;max-width:790px;font-size:clamp(42px,5.6vw,77px);margin:0 0 22px}
@@ -15,7 +15,7 @@ body{background:#f6f3eb}
 .hero p{color:#596255;font-size:16px;max-width:590px;line-height:1.75}
 .hero-stats{color:#5c675d;margin-top:31px}
 .hero-stats strong{color:#334c39;font-family:'Fraunces',Georgia,serif;font-size:25px}
-.eyebrow,.eyebrow.dark{color:#867058;letter-spacing:1.2px;font-family:'DM Sans',sans-serif}
+.eyebrow,.eyebrow.dark{color:#867058;letter-spacing:1.2px;font-family:'Karla',sans-serif}
 .layout{gap:32px;padding-top:42px}
 .panel,.recipe{background:#fffefa;border:1px solid #e8e1d5;border-radius:9px;box-shadow:0 3px 12px rgba(49,42,30,.035)}
 .panel{padding:23px}
@@ -38,7 +38,7 @@ body{background:#f6f3eb}
 .recipe h3{font-family:'Fraunces',Georgia,serif;font-size:20px;line-height:1.24;font-weight:600;letter-spacing:-.4px}
 .recipe-body{padding:21px}
 .tags span{background:#eeeedd;color:#52624d;border-radius:3px}
-.macros strong{font-family:'DM Sans',sans-serif;font-size:16px}
+.macros strong{font-family:'Karla',sans-serif;font-size:16px}
 .card-bottom{border-top:1px solid #eee9df;padding-top:12px}
 .price{font-family:'Fraunces',Georgia,serif}
 .prices>div{border:1px solid #e7e0d6;border-radius:5px;background:#fffefa}
@@ -65,13 +65,13 @@ footer{background:#f6f3eb;border-color:#e7dfd1;color:#827c71}
 
 /* Identidad editorial NutriPlan · cálida, cotidiana, sin adornos innecesarios */
 500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500,0,0;9..144,600,0,0;9..144,700,0,0&display=swap');
-:root{font-family:'DM Sans',Arial,sans-serif;color:#29342a;background:#f6f3eb}
+:root{font-family:'Karla',Arial,sans-serif;color:#29342a;background:#f6f3eb}
 body{background:#f6f3eb}
 .shell{max-width:1440px}
 .top{height:88px;background:#faf8f2;border-bottom:1px solid #e8e2d7}
 .logo{font-family:'Fraunces',Georgia,serif;font-size:27px;letter-spacing:-1.1px;font-weight:700;color:#293e31}
 .logo span{color:#638366}
-.brand-tagline{color:#806f58;font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:1.5px}
+.brand-tagline{color:#806f58;font-family:'Karla',sans-serif;font-size:10px;letter-spacing:1.5px}
 .hero{background:#eee6d7;color:#26372a;padding:67px 6% 61px;border-bottom:1px solid #e5d9c5}
 .hero:after{display:none}
 .hero h1{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-2.2px;line-height:1.13;max-width:790px;font-size:clamp(42px,5.6vw,77px);margin:0 0 22px}
@@ -79,7 +79,7 @@ body{background:#f6f3eb}
 .hero p{color:#596255;font-size:16px;max-width:590px;line-height:1.75}
 .hero-stats{color:#5c675d;margin-top:31px}
 .hero-stats strong{color:#334c39;font-family:'Fraunces',Georgia,serif;font-size:25px}
-.eyebrow,.eyebrow.dark{color:#867058;letter-spacing:1.2px;font-family:'DM Sans',sans-serif}
+.eyebrow,.eyebrow.dark{color:#867058;letter-spacing:1.2px;font-family:'Karla',sans-serif}
 .layout{gap:32px;padding-top:42px}
 .panel,.recipe{background:#fffefa;border:1px solid #e8e1d5;border-radius:9px;box-shadow:0 3px 12px rgba(49,42,30,.035)}
 .panel{padding:23px}
@@ -102,7 +102,7 @@ body{background:#f6f3eb}
 .recipe h3{font-family:'Fraunces',Georgia,serif;font-size:20px;line-height:1.24;font-weight:600;letter-spacing:-.4px}
 .recipe-body{padding:21px}
 .tags span{background:#eeeedd;color:#52624d;border-radius:3px}
-.macros strong{font-family:'DM Sans',sans-serif;font-size:16px}
+.macros strong{font-family:'Karla',sans-serif;font-size:16px}
 .card-bottom{border-top:1px solid #eee9df;padding-top:12px}
 .price{font-family:'Fraunces',Georgia,serif}
 .prices>div{border:1px solid #e7e0d6;border-radius:5px;background:#fffefa}
@@ -113,3 +113,15 @@ body{background:#f6f3eb}
 .steps p{background:#f7f5ed;border-left:2px solid #909e78}
 footer{background:#f6f3eb;border-color:#e7dfd1;color:#827c71}
 @media(max-width:560px){.top{height:78px}.hero{padding:48px 6%}.hero h1{font-size:clamp(39px,11vw,53px);letter-spacing:-1.4px}.hero p{font-size:14px}.layout{padding-top:29px}.results-head h2{font-size:29px}.recipe-banner{height:137px}}
+
+
+/* Menú editorial, navegación real dentro del catálogo */
+.top{min-height:119px;height:auto;padding-top:17px;padding-bottom:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.category-nav{display:flex;order:2;flex-basis:100%;align-items:center;gap:clamp(9px,1.8vw,27px);flex-wrap:wrap;border-top:1px solid #e9e2d6;padding-top:14px}
+.nav-item{border:0;border-bottom:2px solid transparent;padding:4px 0 8px;background:transparent;color:#485749;white-space:nowrap;font-family:'Karla',Arial,sans-serif;font-size:13px;font-weight:700;cursor:pointer}
+.nav-item:hover,.nav-item:focus-visible{color:#265c3b;border-bottom-color:#b9c4a6}
+.nav-item.selected{color:#24583c;border-bottom-color:#24583c}
+.menu-toggle{display:none;font-family:'Karla',Arial,sans-serif;background:#f3efe5;border:1px solid #ddd5c7;color:#385541;padding:9px 13px;border-radius:5px;font-weight:700}
+#recipe-results{scroll-margin-top:18px}
+@media(max-width:950px){.category-nav{column-gap:20px;row-gap:8px}.nav-item{font-size:12px}}
+@media(max-width:680px){.top{min-height:72px;padding:12px 5%;gap:8px}.menu-toggle{display:block}.category-nav{display:none;order:3;width:100%;flex-basis:100%;padding:10px 0 5px;align-items:stretch;flex-direction:column;gap:0;border-top:1px solid #e9e2d6}.category-nav.open{display:flex}.nav-item{padding:12px 7px;text-align:left;border-bottom:1px solid #eee8dd;font-size:14px}.nav-item.selected{background:#edf1e8;border-left:3px solid #406349;padding-left:10px}.logo{font-size:24px}}
