@@ -65,3 +65,36 @@ body{background:#f7f4ed}
 .selected-tag:hover{background:#ddeada}
 @media(max-width:850px){.sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.pantry-selected{grid-column:1/-1}}
 @media(max-width:560px){.sidebar{grid-template-columns:1fr}.pantry-selected{grid-column:auto}.pantry-groups{max-height:360px}}
+
+/* NutriPlan V2: portadas y fichas con un solo lenguaje visual */
+:root{--np-cream:#F6F1E8;--np-ink:#2E4A3D;--np-olive:#6F8B5E;--np-sage:#A8B99A;--np-border:#e8dfd2}
+body{background:var(--np-cream);color:var(--np-ink)}
+.recipe,.idea-tile{background:#fffdfa;border:1px solid var(--np-border);border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(60,50,36,.045);transition:transform .18s ease,box-shadow .18s ease}
+.recipe:hover,.idea-tile:hover{transform:translateY(-2px);box-shadow:0 7px 24px rgba(60,50,36,.09)}
+.recipe-banner{height:170px;padding:0;position:relative;background:transparent}
+.recipe-banner>.dish-image{width:100%;height:100%}
+.recipe-category{position:absolute;top:12px;left:12px;background:#fffdf2e8;border-radius:5px;padding:6px 10px;font:700 11px Karla,Arial,sans-serif;color:#365540}
+.dish-image{height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#e1eadc}
+.dish-image:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:#ffffff61;transform:translate(50px,-22px)}
+.dish-image span{position:relative;font-size:76px;filter:drop-shadow(0 9px 9px #3b41271e)}
+.dish-sage{background:linear-gradient(125deg,#e4ebdc,#c8d8c0)}
+.dish-earth{background:linear-gradient(125deg,#f1e7d8,#d8c4a4)}
+.dish-gold{background:linear-gradient(125deg,#f6ebcd,#e6d49c)}
+.dish-berry{background:linear-gradient(125deg,#eee6df,#f0d2cd)}
+.dish-tomato{background:linear-gradient(125deg,#f2e9d9,#eacdb2)}
+.dish-large{height:235px;border-radius:9px;margin:14px 0 20px}
+.dish-large span{font-size:105px}
+.idea-tile{padding:0;display:flex;flex-direction:column;min-height:0;gap:0}
+.idea-tile .dish-image{width:100%;height:170px}
+.idea-tile .idea-label,.idea-tile strong,.idea-tile small{margin-left:18px;margin-right:18px}
+.idea-tile .idea-label{margin-top:15px;margin-bottom:6px}
+.idea-tile strong{font:600 20px/1.3 Fraunces,Georgia,serif;margin-bottom:8px}
+.idea-tile small{font:400 12px/1.5 Karla,Arial,sans-serif;margin-bottom:16px}
+.idea-tile .idea-open{width:calc(100% - 36px);margin:0 18px 18px;border-radius:6px}
+.recipe-body{padding:19px}
+.recipe h3{font:600 20px/1.3 Fraunces,Georgia,serif}
+.modal{width:min(720px,100%);max-width:720px}
+.modal h2{font:600 32px/1.2 Fraunces,Georgia,serif;color:var(--np-ink);margin-right:28px}
+.modal .dish-image{max-width:100%}
+@media(max-width:700px){.cards,.idea-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.modal{padding:20px}.dish-large{height:205px}}
+@media(max-width:500px){.cards,.idea-grid{grid-template-columns:1fr}.recipe-banner,.idea-tile .dish-image{height:185px}.modal h2{font-size:26px}}
