@@ -38,3 +38,14 @@ body{background:#f7f4ed}
 .idea-tile strong{font:600 16px Fraunces,Georgia,serif;color:#2c4334}
 .idea-tile small{font:400 11px Karla,Arial,sans-serif;color:#8b8677}
 @media(max-width:650px){.idea-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-height:380px}.idea-catalog{padding:14px}.idea-heading h3{font-size:21px}}
+
+/* Ideas en tarjetas consistentes con el recetario, sin scroll interior */
+.idea-catalog{margin:18px 0 25px;background:transparent;border:0;padding:0}
+.idea-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));max-height:none;overflow:visible;gap:16px}
+.idea-tile{border-radius:8px;min-height:190px;padding:19px;background:#fffefa;box-shadow:0 4px 15px #3835260c;border:1px solid #e8e1d5}
+.idea-tile strong{font-size:20px;line-height:1.25}
+.idea-label{font-size:11px}
+.idea-open{display:block;width:100%;margin-top:auto;background:#395943;color:white;border:0;border-radius:6px;padding:11px;font-family:Karla,Arial,sans-serif;font-size:12px;font-weight:700}
+.unverified{border:1px solid #e9d8a7;background:#fff8e5;color:#6c5427;border-radius:7px;padding:15px;margin:15px 0;font:400 13px Karla,Arial,sans-serif;line-height:1.6}
+.unverified p{margin-bottom:0}.draft-steps li{margin-bottom:11px;line-height:1.6}
+@media(max-width:600px){.idea-grid{grid-template-columns:1fr;gap:12px}.idea-tile{min-height:160px}}
