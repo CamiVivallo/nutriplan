@@ -116,38 +116,68 @@ body{background:var(--np-cream);color:var(--np-ink)}
 @media(max-width:600px){.hero h1{font-size:clamp(37px,8.5vw,54px);letter-spacing:-.045em;line-height:1.1}}
 
 
-/* Banner verde editorial con sombra negra muy suave */
+/* Banner verde liso: sin degradados, círculos ni estrellas */
 .hero{
- background:radial-gradient(ellipse at 83% 25%,rgba(255,255,255,.08),transparent 37%),linear-gradient(125deg,#355844 0%,#2E4A3D 58%,#446650 100%);
- color:#F6F1E8;position:relative;isolation:isolate;min-height:340px;
+ background:#355844;
+ color:#F6F1E8;
+ position:relative;
+ min-height:340px;
  border-bottom:1px solid rgba(0,0,0,.08);
 }
-.hero:before{
- content:"";position:absolute;right:9%;top:16%;width:240px;height:240px;
- border:1px solid rgba(255,255,255,.14);border-radius:50%;
- box-shadow:0 0 0 30px rgba(255,255,255,.035),0 0 0 62px rgba(255,255,255,.02);
- pointer-events:none;z-index:-1;
-}
-.hero:after{
- content:"✦";display:block;position:absolute;right:19%;top:40%;
- font-family:Georgia,serif;font-size:110px;color:rgba(255,255,255,.13);
- line-height:1;pointer-events:none;z-index:-1;
-}
+.hero:before,.hero:after{content:none;display:none}
 .hero h1{
  font-family:"Bodoni Moda",Didot,"Bodoni MT",Georgia,serif;
- font-weight:700;color:#F6F1E8;
- text-shadow:0 2px 5px rgba(0,0,0,.10);
- position:relative;z-index:1;
+ font-weight:700;
+ color:#F6F1E8;
+ text-shadow:0 1px 3px rgba(0,0,0,.10);
+ position:relative;
+ z-index:1;
 }
 .hero h1 em{
  color:#DCE8D6;
- text-shadow:0 2px 5px rgba(0,0,0,.10);
+ text-shadow:0 1px 3px rgba(0,0,0,.10);
 }
 .hero p,.hero-stats{position:relative;z-index:1;color:#E6EEE7}
 .hero-stats strong{color:#FFFFFF}
 @media(max-width:720px){
  .hero{min-height:0}
- .hero:before{right:-105px;top:15%;width:190px;height:190px}
- .hero:after{right:7%;top:12%;font-size:58px;opacity:.45}
- .hero h1,.hero h1 em{text-shadow:0 1px 4px rgba(0,0,0,.10)}
+ .hero h1,.hero h1 em{text-shadow:0 1px 2px rgba(0,0,0,.10)}
 }
+
+/* Etapa 1 · ajustes puntuales sin alterar el banner ni las ilustraciones */
+.pantry-search-label{display:block;margin:16px 0 6px;color:#36543e;font:700 12px Karla,Arial,sans-serif}
+.pantry-search{display:block;width:100%;min-width:0;padding:11px 12px;border:1px solid #d4dccf;border-radius:7px;background:#fffefa;color:#2e4a3d;font:400 13px Karla,Arial,sans-serif}
+.pantry-search::placeholder{color:#849184}
+.pantry-no-results{padding:9px 0}
+.catalog-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 16px}
+.catalog-toolbar .muted{margin:0;max-width:480px}
+.catalog-toolbar .healthy-filter{padding:9px 12px;white-space:normal}
+.catalog-cards{align-items:stretch}
+.catalog-card .recipe-body{gap:5px}
+.catalog-card .recipe-body .card-bottom{padding-top:12px}
+.catalog-card .recipe-body .muted.small{margin:4px 0}
+.catalog-idea .tags span:first-child{background:#f3ead8;color:#765e3c}
+.catalog-idea .card-bottom strong{font-size:14px;color:#536a54}
+.recipe-detail .dish-large{width:100%;aspect-ratio:16/9;height:auto;min-height:160px}
+.recipe-detail .recipe-meta{margin:12px 0}
+.recipe-detail-section{margin-top:24px;padding-top:15px;border-top:1px solid #e9e1d5}
+.recipe-detail-section h3{font:600 23px/1.25 Fraunces,Georgia,serif;color:#2E4A3D;margin:0 0 13px}
+.recipe-detail-heading{display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.detail-ingredients{padding:0;margin:0;list-style:none}
+.detail-ingredients li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 2px;border-bottom:1px solid #efe7da;font-size:14px}
+.detail-ingredients li>strong{white-space:nowrap;color:#2E4A3D}
+.ingredient-owned{color:#52744b;font-size:12px}
+.detail-steps{counter-reset:preparation;list-style:none;margin:0;padding:0;display:grid;gap:13px}
+.detail-steps li{counter-increment:preparation;display:grid;grid-template-columns:32px 1fr;gap:12px;line-height:1.65;font-size:14px;align-items:start}
+.detail-steps li:before{content:counter(preparation);display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#e8eee2;color:#355b3d;font-weight:700}
+.detail-nutrition{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.detail-nutrition span{display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:8px;background:#f4f5ee;font-size:12px;color:#566954}
+.detail-nutrition strong{font-size:18px;color:#2E4A3D}
+.related-recipes{display:grid;gap:8px}
+.related-recipes button{display:grid;grid-template-columns:36px 1fr auto;align-items:center;text-align:left;gap:12px;padding:11px;background:#fbfaf4;border:1px solid #e8dfd2;border-radius:8px;color:#2E4A3D;font:400 13px Karla,Arial,sans-serif}
+.related-recipes button:hover{background:#eff2e9;border-color:#b3c4a7}
+.related-recipes button span:nth-child(2){min-width:0;display:flex;flex-direction:column;gap:4px}
+.related-recipes button small{font-size:11px;color:#6e806f}
+.related-icon{font-size:26px}
+.pantry-search:focus-visible,.related-recipes button:focus-visible,.catalog-card button:focus-visible{outline:2px solid #557a5b;outline-offset:2px}
+@media(max-width:600px){.catalog-toolbar{align-items:stretch}.catalog-toolbar .healthy-filter{width:max-content;max-width:100%}.recipe-detail-section h3{font-size:21px}.detail-ingredients li{font-size:13px}}
