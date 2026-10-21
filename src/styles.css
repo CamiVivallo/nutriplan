@@ -114,35 +114,3 @@ body{background:var(--np-cream);color:var(--np-ink)}
 .hero h1{font-family:"Bodoni Moda",Didot,"Bodoni MT",Georgia,serif;font-weight:700;letter-spacing:-.045em;line-height:1.08;text-wrap:balance;color:#2E4A3D}
 .hero h1 em{font-family:inherit;font-style:italic;font-weight:700;color:#557a5b}
 @media(max-width:600px){.hero h1{font-size:clamp(37px,8.5vw,54px);letter-spacing:-.045em;line-height:1.1}}
-
-/* Editorial cálido V2 · coherencia del encabezado, catálogo y lectura */
-:root{font-family:Karla,Arial,sans-serif;background:#F6F1E8;color:#2E4A3D}
-.top{height:auto;min-height:76px;background:#F6F1E8;border-bottom:1px solid #e8dfd2}
-.hero{background:#F6F1E8;color:#2E4A3D}
-.hero:after{border-color:rgba(111,139,94,.08);pointer-events:none}
-.hero p,.hero-stats{color:#526858}
-.hero-stats strong{color:#2E4A3D}
-.eyebrow,.eyebrow.dark{color:#6F8B5E}
-.hero h1{max-width:800px}
-.hero h1 em{font-style:italic}
-.panel,.empty{background:#fffdfa;border-color:#e8dfd2}
-.panel h2,.results-head h2{font-family:Fraunces,Georgia,serif;color:#2E4A3D}
-.recipe-banner,.idea-tile .dish-image{height:auto;aspect-ratio:4/3}
-.recipe-banner>.dish-image{height:100%;aspect-ratio:4/3}
-.recipe-banner .dish-image img,.idea-tile .dish-image img{object-fit:cover}
-.idea-grid,.cards{grid-template-columns:repeat(auto-fill,minmax(min(100%,235px),1fr));align-items:stretch}
-.idea-tile strong,.recipe h3{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.idea-tile .idea-open,.card-bottom button,.empty button{background:#6F8B5E;color:#fff}
-.idea-tile .idea-open:hover,.card-bottom button:hover,.empty button:hover{background:#2E4A3D}
-.chip.active{background:#2E4A3D;border-color:#2E4A3D}
-.modal{background:#fffdfa}
-.dish-image{isolation:isolate}
-.dish-image:before{z-index:0}
-.dish-image img{z-index:1}
-.dish-image span{z-index:0}
-@media(max-width:600px){
- .hero{padding:42px 6%}
- .recipe-banner,.idea-tile .dish-image{height:auto;aspect-ratio:4/3}
- .recipe-banner>.dish-image{height:100%}
-}
-@media(prefers-reduced-motion:reduce){.recipe,.idea-tile{transition:none}.recipe:hover,.idea-tile:hover{transform:none}}
