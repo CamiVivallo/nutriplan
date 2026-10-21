@@ -116,40 +116,32 @@ body{background:var(--np-cream);color:var(--np-ink)}
 @media(max-width:600px){.hero h1{font-size:clamp(37px,8.5vw,54px);letter-spacing:-.045em;line-height:1.1}}
 
 
-/* Banner verde editorial con sombra negra muy suave */
+/* Banner verde liso: sin degradados, círculos ni estrellas */
 .hero{
- background:radial-gradient(ellipse at 83% 25%,rgba(255,255,255,.08),transparent 37%),linear-gradient(125deg,#355844 0%,#2E4A3D 58%,#446650 100%);
- color:#F6F1E8;position:relative;isolation:isolate;min-height:340px;
+ background:#355844;
+ color:#F6F1E8;
+ position:relative;
+ min-height:340px;
  border-bottom:1px solid rgba(0,0,0,.08);
 }
-.hero:before{
- content:"";position:absolute;right:9%;top:16%;width:240px;height:240px;
- border:1px solid rgba(255,255,255,.14);border-radius:50%;
- box-shadow:0 0 0 30px rgba(255,255,255,.035),0 0 0 62px rgba(255,255,255,.02);
- pointer-events:none;z-index:-1;
-}
-.hero:after{
- content:"✦";display:block;position:absolute;right:19%;top:40%;
- font-family:Georgia,serif;font-size:110px;color:rgba(255,255,255,.13);
- line-height:1;pointer-events:none;z-index:-1;
-}
+.hero:before,.hero:after{content:none;display:none}
 .hero h1{
  font-family:"Bodoni Moda",Didot,"Bodoni MT",Georgia,serif;
- font-weight:700;color:#F6F1E8;
- text-shadow:0 2px 5px rgba(0,0,0,.10);
- position:relative;z-index:1;
+ font-weight:700;
+ color:#F6F1E8;
+ text-shadow:0 1px 3px rgba(0,0,0,.10);
+ position:relative;
+ z-index:1;
 }
 .hero h1 em{
  color:#DCE8D6;
- text-shadow:0 2px 5px rgba(0,0,0,.10);
+ text-shadow:0 1px 3px rgba(0,0,0,.10);
 }
 .hero p,.hero-stats{position:relative;z-index:1;color:#E6EEE7}
 .hero-stats strong{color:#FFFFFF}
 @media(max-width:720px){
  .hero{min-height:0}
- .hero:before{right:-105px;top:15%;width:190px;height:190px}
- .hero:after{right:7%;top:12%;font-size:58px;opacity:.45}
- .hero h1,.hero h1 em{text-shadow:0 1px 4px rgba(0,0,0,.10)}
+ .hero h1,.hero h1 em{text-shadow:0 1px 2px rgba(0,0,0,.10)}
 }
 
 /* Etapa 1 · ajustes puntuales sin alterar el banner ni las ilustraciones */
