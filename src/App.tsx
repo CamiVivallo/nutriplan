@@ -85,6 +85,22 @@ function dishVisual(name:string,category:string) {
  if(/arroz|tallarines|pasta/.test(n)) return {emoji:"🍝",tone:"tomato"};
  return {emoji:category==="Bebida"?"🥛":category==="Postre"?"🍨":category==="Desayuno"?"🥣":"🍽️",tone:"sage"};
 }
+function stepsFor(recipe:Recipe):string[]{
+ const instruction=recipe.instructions.trim();
+ const numbered=instruction.split(/(?=\b\d+\.\s)/).map(step=>step.replace(/^\d+\.\s*/,"").trim()).filter(Boolean);
+ if(numbered.length>1)return numbered;
+ return instruction.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ])/).map(step=>step.trim()).filter(Boolean);
+}
+function relatedRecipes(recipe:Recipe):Recipe[]{
+ const ingredients=new Set(recipe.ingredients.map(item=>normalized(item.name)));
+ return recipes.filter(other=>other.id!==recipe.id).map(other=>({
+  recipe:other,
+  overlap:other.ingredients.filter(item=>ingredients.has(normalized(item.name))).length,
+  categoryMatch:other.category===recipe.category
+ })).filter(entry=>entry.overlap>0)
+ .sort((a,b)=>(b.overlap*3+(b.categoryMatch?1:0))-(a.overlap*3+(a.categoryMatch?1:0))||a.recipe.name.localeCompare(b.recipe.name,"es"))
+ .slice(0,3).map(entry=>entry.recipe);
+}
 function normalized(text:string){return text.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("es").trim();}
 function DishImage({name,category,large=false}:{name:string;category:string;large?:boolean}) {
  const visual=dishVisual(name,category);
@@ -184,8 +200,46 @@ export default function App() {
 </div>
 {catalog.length===0&&<div className="empty"><h3>No encontramos preparaciones con esos filtros.</h3><p>Prueba otra búsqueda, aumenta el presupuesto o restablece los filtros.</p><button onClick={()=>{setQuery("");setFilter("Todos");setCategory("Todas");setBudget(30000);setIngredientFilter("Todos");setMethodFilter("Todos");setTimeLimit("Todos");setPriceMin(0);setPriceMax(30000);setHealthyOnly(false);setActiveMenu("");}}>Ver todas las preparaciones</button></div>}
 
- </section></div><footer>NutriPlan · Proyecto educativo · Valores nutricionales y precios referenciales. *Sin gluten según ingredientes declarados; verifica etiquetas y contaminación cruzada..</footer>
+ </section></div><footer>NutriPlan · Proyecto educativo · Valores nutricionales y precios referenciales. *Sin gluten según ingredientes declarados; verifica etiquetas y contaminación cruzada.</footer>
  {selectedIdea&&<div className="modal-backdrop" onClick={()=>setSelectedIdea(null)}><section className="modal" role="dialog" aria-modal="true" aria-label={selectedIdea.name} onClick={e=>e.stopPropagation()}><button className="close" aria-label="Cerrar" onClick={()=>setSelectedIdea(null)}>×</button><p className="eyebrow dark">{selectedIdea.section} · Versión Saludable</p><h2>{selectedIdea.name}</h2><DishImage name={selectedIdea.name} category={selectedIdea.section} large/><div className="unverified"><strong>Información no verificada · Estamos trabajando en esta receta</strong><p>Esta ficha es una propuesta inicial. Sus ingredientes, cantidades y pasos son orientativos y aún no han sido probados. No mostramos valores nutricionales ni precios inventados.</p></div><h3>Ingredientes sugeridos</h3><p>{selectedIdea.name.toLowerCase().includes("jugo")||selectedIdea.name.toLowerCase().includes("smoothie")||selectedIdea.name.toLowerCase().includes("batido")?"Fruta o ingredientes indicados en el nombre, agua potable y hielo opcional":selectedIdea.name.toLowerCase().includes("gelatina")?"Gelatina alimentaria y frutas o lácteos indicados en el nombre, según las instrucciones del producto":selectedIdea.name.toLowerCase().includes("hamburguesa")?"Ingrediente principal indicado en el nombre, condimentos, verduras y acompañamientos a elección":"Ingredientes principales indicados en el nombre y complementos al gusto; las cantidades todavía están por definir"}</p><h3>Preparación preliminar</h3><ol className="draft-steps"><li>Reúne y lava los ingredientes que correspondan; separa utensilios limpios</li><li>Prepara el ingrediente principal con el método que corresponda (horno, sartén, cocción o licuadora), siguiendo instrucciones seguras del producto</li><li>Combina los ingredientes y ajusta textura o sazón a gusto</li><li>Antes de preparar esta idea, consulta una receta validada: todavía faltan cantidades, temperatura y tiempos precisos</li></ol><p className="muted small">Ficha provisional de NutriPlan. No está validada para alergias, necesidades médicas ni cálculos nutricionales.</p></section></div>}
- {selected&&<div className="modal-backdrop" onClick={()=>setSelected(null)}><section className="modal" role="dialog" aria-modal="true" aria-label={selected.name} onClick={e=>e.stopPropagation()}><button className="close" aria-label="Cerrar" onClick={()=>setSelected(null)}>×</button><p className="eyebrow dark">{selected.category}</p><div className="recipe-meta"><span>⏱️ {minutesFor(selected)} min</span><span>{selected.instructions.includes("190 °C")?"♨️ Horno 190 °C":selected.instructions.toLowerCase().includes("sartén")?"🍳 Sartén · fuego medio":selected.instructions.toLowerCase().includes("licúa")?"🥛 Licuadora":selected.instructions.toLowerCase().includes("refrigerado")?"❄️ Frío":"🍲 Olla"}</span><span>🍽️ {people} {people===1?"persona":"personas"}</span></div><h2>{selected.name}</h2><DishImage name={selected.name} category={selected.category} large/><div className="servings"><span>¿Para cuántas personas cocinas?</span><div className="servings-control"><button type="button" aria-label="Restar persona" disabled={people<=1} onClick={()=>setPeople(p=>Math.max(1,p-1))}>−</button><strong>{people} {people===1?"persona":"personas"}</strong><button type="button" aria-label="Sumar persona" disabled={people>=20} onClick={()=>setPeople(p=>Math.min(20,p+1))}>+</button></div></div><div className="steps">{selected.instructions.split(/(?=\d\. )/).map((step,i)=><p key={i}>{step.trim()}</p>)}</div><p className="muted">Tiempo total estimado: {minutesFor(selected)} min. Los tiempos y temperaturas pueden variar según el equipo.</p><h3>Ingredientes</h3><ul>{selected.ingredients.map(item=><li key={item.name}>{item.name}: {Number((item.grams*people/selected.portions).toFixed(1))} g · {round(item.kcal100*item.grams/100*people/selected.portions)} kcal en total {pantry.includes(item.name)?"✓ En despensa":"· Falta comprar"}</li>)}</ul><h3>Nutrición por persona</h3><p>{round(nutrient(selected,"kcal100"))} kcal · {nutrient(selected,"protein100").toFixed(1)} g proteínas · {nutrient(selected,"carbs100").toFixed(1)} g carbohidratos · {nutrient(selected,"fat100").toFixed(1)} g grasas</p><p><strong>Costo estimado para {people} {people===1?"persona":"personas"}: {formatMoney(missingCost(selected,pantry)*people/selected.portions)}</strong></p><p className="muted small">Costo aproximado de las cantidades que faltan, no de los paquetes completos. Las cantidades se escalan proporcionalmente; los tiempos de cocción pueden necesitar ajustes.</p><p className="muted small">Todos los datos son aproximados y demostrativos; no constituyen una recomendación médica.</p></section></div>}
+ {selected&&<div className="modal-backdrop" onClick={()=>setSelected(null)}>
+  <section className="modal recipe-detail" role="dialog" aria-modal="true" aria-label={selected.name} onClick={e=>e.stopPropagation()}>
+   <button className="close" aria-label="Cerrar" onClick={()=>setSelected(null)}>×</button>
+   <p className="eyebrow dark">{selected.category} · Receta con información referencial</p>
+   <h2>{selected.name}</h2>
+   <DishImage name={selected.name} category={selected.category} large/>
+   <div className="recipe-meta">
+    <span>⏱ {minutesFor(selected)} min estimados</span>
+    <span>🍽 {people} {people===1?"persona":"personas"}</span>
+    <span>{selected.instructions.toLowerCase().includes("horno")?"♨️ Horno":selected.instructions.toLowerCase().includes("sartén")?"🍳 Sartén":selected.instructions.toLowerCase().includes("licúa")?"🥛 Licuadora":selected.instructions.toLowerCase().includes("refriger")?"❄️ Refrigeración":"Preparación casera"}</span>
+   </div>
+   <div className="servings"><span>¿Para cuántas personas cocinas?</span><div className="servings-control"><button type="button" aria-label="Restar persona" disabled={people<=1} onClick={()=>setPeople(p=>Math.max(1,p-1))}>−</button><strong>{people} {people===1?"persona":"personas"}</strong><button type="button" aria-label="Sumar persona" disabled={people>=20} onClick={()=>setPeople(p=>Math.min(20,p+1))}>+</button></div></div>
+   <section className="recipe-detail-section">
+    <div className="recipe-detail-heading"><h3>Ingredientes</h3><span className="muted">{selected.ingredients.filter(i=>pantry.includes(i.name)).length} de {selected.ingredients.length} en tu despensa</span></div>
+    <ul className="detail-ingredients">{selected.ingredients.map((item,i)=><li key={item.name+"-"+i}><span>{item.name}{pantry.includes(item.name)&&<small className="ingredient-owned"> · En despensa</small>}</span><strong>{Number((item.grams*people/selected.portions).toFixed(1))} g</strong></li>)}</ul>
+    <p className="muted small">Las cantidades se ajustan según las porciones. Estar en la despensa no confirma que tengas suficiente cantidad.</p>
+   </section>
+   <section className="recipe-detail-section">
+    <h3>Preparación paso a paso</h3>
+    <ol className="detail-steps">{stepsFor(selected).map((step,i)=><li key={i}>{step}</li>)}</ol>
+    <p className="muted small">Los tiempos y temperaturas pueden variar según el equipo y las cantidades.</p>
+   </section>
+   <section className="recipe-detail-section">
+    <h3>Nutrición estimada por persona</h3>
+    <div className="detail-nutrition"><span><strong>{round(nutrient(selected,"kcal100"))}</strong> kcal</span><span><strong>{nutrient(selected,"protein100").toFixed(1)} g</strong> proteínas</span><span><strong>{nutrient(selected,"carbs100").toFixed(1)} g</strong> carbohidratos</span><span><strong>{nutrient(selected,"fat100").toFixed(1)} g</strong> grasas</span></div>
+    <p className="muted small">Valores demostrativos basados en los ingredientes registrados. No son datos nutricionales verificados ni recomendaciones médicas.</p>
+   </section>
+   <section className="recipe-detail-section">
+    <h3>Costo estimado</h3>
+    <p><strong>{formatMoney(missingCost(selected,pantry)*people/selected.portions)}</strong> por los ingredientes faltantes para {people} {people===1?"persona":"personas"}.</p>
+    <p className="muted small">Precio referencial de las cantidades utilizadas, no del tamaño de los envases. Los valores pueden variar entre supermercados.</p>
+   </section>
+   {relatedRecipes(selected).length>0&&<section className="recipe-detail-section">
+    <h3>Otras recetas que podrían gustarte</h3>
+    <p className="muted small">Sugeridas por ingredientes compartidos, no por equivalencia nutricional.</p>
+    <div className="related-recipes">{relatedRecipes(selected).map(other=><button type="button" key={other.id} onClick={()=>{document.querySelector(".recipe-detail")?.scrollTo({top:0,behavior:"smooth"});setPeople(other.portions);setSelected(other);}}><span className="related-icon" aria-hidden="true">{dishVisual(other.name,other.category).emoji}</span><span><strong>{other.name}</strong><small>{minutesFor(other)} min estimados · {other.category}</small></span><span aria-hidden="true">→</span></button>)}</div>
+   </section>}
+  </section>
+ </div>}
  </main>;
 }
